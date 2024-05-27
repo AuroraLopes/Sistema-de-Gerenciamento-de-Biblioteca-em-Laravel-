@@ -1,66 +1,159 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Claro, aqui está o texto formatado como um README:
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+# API Gerenciamento de Biblioteca
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Sobre a API
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Esse sistema de gerenciamento de biblioteca é uma aplicação feita utilizando o Framework Laravel e a linguagem PHP. Ela oferece endpoints para o cadastro e gerenciamento de autores, livros e empréstimos, com os acessos à API autenticados.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Funcionalidades
 
-## Learning Laravel
+#### Autores
+- Permite criar, listar, atualizar e deletar autores.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### Livros
+- Permite criar, listar, atualizar e deletar livros.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+#### Empréstimos
+- Permite registrar e listar empréstimos de livros.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### Usuário
+- Permite registrar um usuário.
 
-## Laravel Sponsors
+#### Autenticação
+- Autenticação JWT para proteger os endpoints da API.
+- O usuário pode registrar-se e autenticar-se na API.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Como instalar
 
-### Premium Partners
+### Pré-requisitos
+- Possuir PHP 8.3 instalado na máquina.
+- Possuir Laravel 11 instalado na máquina.
+- Possuir Composer instalado na máquina.
+- Possuir Driver do SQLite (atualmente o banco de dados SQLite está dentro da pasta `database`, arquivo `database.sqlite`).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Passo 1
+Caso precise configurar o banco SQLite do zero, será necessário realizar as migrações do banco. Utilize o comando:
 
-## Contributing
+```sh
+php artisan migrate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Em seguida, precisamos criar um usuário admin da aplicação. Para isso, usamos o Seed do database. Utilize o comando:
 
-## Code of Conduct
+```sh
+php artisan db:seed
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Passo 2
+Vamos iniciar a API utilizando o comando:
 
-## Security Vulnerabilities
+```sh
+php artisan serve
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Passo 3
+Com a API iniciada, você pode começar a utilizar apontando para o seu host local nas seguintes URLs:
 
-## License
+#### Rotas autenticadas
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+##### Autores
+
+- Buscar Autores
+  ```sh
+  GET /api/autores
+  ```
+
+- Buscar Autores por ID
+  ```sh
+  GET /api/autores/{id}
+  ```
+
+- Criar Autores
+  ```sh
+  POST /api/autores
+  ```
+
+- Atualizar Autores por ID
+  ```sh
+  PUT /api/autores/{id}
+  ```
+
+- Deletar Autores por ID
+  ```sh
+  DELETE /api/autores/{id}
+  ```
+    
+##### Livros
+
+- Buscar Livros
+  ```sh
+  GET /api/livros
+  ```
+
+- Buscar Livros por ID
+  ```sh
+  GET /api/livros/{id}
+  ```
+
+- Criar Livros
+  ```sh
+  POST /api/livros
+  ```
+
+- Atualizar Livros por ID
+  ```sh
+  PUT /api/livros/{id}
+  ```
+  
+- Deletar Livros por ID
+  ```sh
+  DELETE /api/livros/{id}
+  ```
+
+##### Empréstimos
+
+- Buscar Empréstimos
+  ```sh
+  GET /api/emprestimos
+  ```
+
+- Buscar Empréstimos por ID
+  ```sh
+  GET /api/emprestimos/{id}
+  ```
+
+- Criar Empréstimos
+  ```sh
+  POST /api/emprestimos
+  ```
+
+- Atualizar Empréstimos por ID
+  ```sh
+  PUT /api/emprestimos/{id}
+  ```
+
+- Deletar Empréstimos por ID
+  ```sh
+  DELETE /api/emprestimos/{id}
+  ```
+
+#### Rotas não autenticadas
+
+- Realizar Login
+  ```sh
+  POST /api/login
+  ``` 
+
+- Registrar Usuário
+  ```sh
+  POST /api/registrar
+  ```
+
+## Como usar a API
+
+Pessoalmente, gosto de usar o Postman ou Insomnia, e também pode ser implementado no seu front-end. Bom uso!
+
+---
