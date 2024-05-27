@@ -1,6 +1,3 @@
-Claro, aqui está o texto formatado como um README:
-
----
 
 # API Gerenciamento de Biblioteca
 
